@@ -5,7 +5,7 @@ import Forecast from './Forecast'
 
 export default class Weather extends React.Component {
     fetchData = () => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.props.zipCode},th&units=metric&APPID=fd68c0f2039c5a25f666a9ff374bc93e`)
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${this.props.ZipCode},th&units=metric&APPID=fd68c0f2039c5a25f666a9ff374bc93e`)
             .then((response) => response.json())
             .then((json) => {
                 this.setState(
@@ -33,7 +33,7 @@ export default class Weather extends React.Component {
 
     }
     componentDidUpdate = (prevProps) => {
-        if (prevProps.zipCode !== this.props.zipCode) {
+        if (prevProps.ZipCode !== this.props.ZipCode) {
             this.fetchData()
         }
     }
@@ -42,7 +42,7 @@ export default class Weather extends React.Component {
         return (
             <View style={styles.container}>
                 <ImageBackground source={require('../bg5.jpeg')} style={styles.backdrop}>
-                    <Text style={styles.padding}>Zip code is {this.props.zipCode}</Text>
+                    <Text style={styles.padding}>Zip code is {this.props.ZipCode}</Text>
                     <Forecast {...this.state.forecast} />
                 </ImageBackground>
             </View>
